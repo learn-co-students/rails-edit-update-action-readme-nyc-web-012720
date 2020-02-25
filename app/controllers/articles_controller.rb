@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  # before_action :article_helper, only:[:show, :edit, :update]
+  
   def index
     @articles = Article.all
   end
@@ -20,4 +22,24 @@ class ArticlesController < ApplicationController
   end
 
   # add edit and update methods here
+  def edit
+    @article = Article.find(params[:id])
+    # redirect_to article_path(@article)
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    @article.update(article_params)
+    redirect_to @article
+  end
+
+  private
+
+  # def article_helper
+  #   @article = Article.find(params[:id])
+  # end
+
+  def article_params
+    params.require(:article).permit(:title, :description)
+  end
 end
