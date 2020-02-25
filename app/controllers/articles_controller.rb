@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
     redirect_to @article
   end
 
-  private
+  # private
 
   # def article_helper
   #   @article = Article.find(params[:id])
